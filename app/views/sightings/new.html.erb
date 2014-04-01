@@ -1,0 +1,44 @@
+<% if @sighting.errors.any? %>
+    <h3>Please fix these errors:</h3>
+    <ul>
+      <% @sighting.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+<% end %>
+
+<form class="form-inline" action="/sightings/new" method="post">
+  <select class="form-control" id="species_id" name="sighting[species_id]" type="number">
+   <% @species.each do |species| %>
+    <option value="<%= species.id %>" ><%= species.name %></option>
+  <% end %>
+  </select>
+
+  <select class="form-control" id="region" name="sighting[region_id]" type="number">
+   <% @regions.each do |region| %>
+    <option value="<%= region.id %>" ><%= region.name %></option>
+  <% end %>
+  </select>
+
+  <input class="form-control" id="location" name="sighting[locaton]" type="text" placeholder="location">
+
+  <input class="form-control" id="date" name="sighting[date]" type="text" placeholder="YYYY-MM-DD">
+  <input class="form-control" id="time" name="sighting[time]" type="text" placeholder="HH:MM:SS">
+
+  <button type="submit">submit</button>
+</form>
+
+<table class="table table-striped table-hover">
+  <tr>
+    <td>Species</td>
+    <td>location</td>
+    <td>region</td>
+  </tr>
+  <% @sightings.each do |sighting| %>
+  <tr>
+    <td><%= @speciesNames[sighting.species_id] %></td>
+    <td><%= sighting.locaton %></td>
+    <td><%= @regionNames[sighting.region_id] %></td>
+  </tr>
+  <% end %>
+</table>

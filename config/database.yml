@@ -1,0 +1,16 @@
+
+development:
+  adapter: postgresql
+  database: wildlifeTracker_development
+
+test:
+  adapter: postgresql
+  database: wildlifeTracker_test
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: wildlifeTracker_production
+  pool: 5
+  username: wildlifeTracker
+  password:
