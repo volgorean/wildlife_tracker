@@ -36,13 +36,13 @@
     <td>location</td>
     <td>date</td>
     <td>time</td>
-    <td></td>
+    <td>     </td>
   </tr>
   <% @sightings.each do |sighting| %>
 
     <tr>
-      <td><%= @speciesNames[sighting.species_id] %></td>
-      <td><%= @regionNames[sighting.region_id] %></td>
+      <td><%= @species.find_by(:id => sighting.species_id).name %></td>
+      <td><%= @regions.find_by(:id => sighting.region_id).name %></td>
       <td><%= sighting.locaton %></td>
       <td><%= sighting.date %></td>
       <td><%= sighting.time.strftime("%H:%M") %></td>
