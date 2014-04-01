@@ -36,15 +36,17 @@
     <td>location</td>
     <td>date</td>
     <td>time</td>
+    <td></td>
   </tr>
   <% @sightings.each do |sighting| %>
 
     <tr>
-      <td><a data-method="delete" href="/sightings/<%= sighting.id %>"><%= @speciesNames[sighting.species_id] %></a></td>
+      <td><%= @speciesNames[sighting.species_id] %></td>
       <td><%= @regionNames[sighting.region_id] %></td>
       <td><%= sighting.locaton %></td>
       <td><%= sighting.date %></td>
       <td><%= sighting.time.strftime("%H:%M") %></td>
+      <td><a data-method="delete" href="/sightings/<%= sighting.id %>"><button class="btn btn-danger">delete</button></a><td>
     </tr>
   <% end %>
 </table>
