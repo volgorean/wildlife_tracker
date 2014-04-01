@@ -6,8 +6,9 @@
       <% end %>
     </ul>
 <% end %>
-
-<form class="form-inline" action="/sightings/new" method="post">
+<a class="smallWrapper" href="/species/new"><button>Add/remove species</button></a>
+<a class="smallWrapper" href="/regions/new"><button>Add/remove regions</button></a>
+<form class="form-inline smallWrapper" action="/sightings/new" method="post">
   <select class="form-control" id="species_id" name="sighting[species_id]" type="number">
    <% @species.each do |species| %>
     <option value="<%= species.id %>" ><%= species.name %></option>
@@ -25,20 +26,25 @@
   <input class="form-control" id="date" name="sighting[date]" type="text" placeholder="YYYY-MM-DD">
   <input class="form-control" id="time" name="sighting[time]" type="text" placeholder="HH:MM:SS">
 
-  <button type="submit">submit</button>
+  <button type="submit">submit sighting</button>
 </form>
-
+<br>
 <table class="table table-striped table-hover">
   <tr>
     <td>Species</td>
     <td>location</td>
     <td>region</td>
+    <td>date▼</td>
+    <td>time</td>
   </tr>
   <% @sightings.each do |sighting| %>
   <tr>
     <td><%= @speciesNames[sighting.species_id] %></td>
-    <td><%= sighting.locaton %></td>
     <td><%= @regionNames[sighting.region_id] %></td>
+    <td><%= sighting.locaton %></td>
+    <td><%= sighting.date %></td>
+    <td><%= sighting.time.strftime("%H:%M") %></td>
+
   </tr>
   <% end %>
 </table>

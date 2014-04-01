@@ -1,0 +1,20 @@
+<% if @region.errors.any? %>
+    <h3>Please fix these errors:</h3>
+    <ul>
+      <% @region.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+<% end %>
+
+<form class="form-inline" action="/regions/new" method="post">
+  <input class="form-control" id="region_name" name="region[name]" type="text" placeholder="Name">
+  <button type="submit">New Region</button>
+</form>
+
+<h1>Current Indexed Regions</h1>
+
+<p><% @currRegions.each do |regions| %>
+    <a data-method="delete" href="/regions/<%= regions.id %>"><%= regions.name %></a>,
+<% end %>...(click to delete)</p>
+<a href="/sightings/new"><button>Return</button></a>
