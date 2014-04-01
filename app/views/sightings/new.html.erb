@@ -38,13 +38,13 @@
     <td>time</td>
   </tr>
   <% @sightings.each do |sighting| %>
-  <tr>
-    <td><%= @speciesNames[sighting.species_id] %></td>
-    <td><%= @regionNames[sighting.region_id] %></td>
-    <td><%= sighting.locaton %></td>
-    <td><%= sighting.date %></td>
-    <td><%= sighting.time.strftime("%H:%M") %></td>
 
-  </tr>
+    <tr>
+      <td><a data-method="delete" href="/sightings/<%= sighting.id %>"><%= @speciesNames[sighting.species_id] %></a></td>
+      <td><%= @regionNames[sighting.region_id] %></td>
+      <td><%= sighting.locaton %></td>
+      <td><%= sighting.date %></td>
+      <td><%= sighting.time.strftime("%H:%M") %></td>
+    </tr>
   <% end %>
 </table>

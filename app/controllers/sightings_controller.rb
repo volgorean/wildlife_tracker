@@ -24,4 +24,9 @@ class SightingsController < ApplicationController
     redirect_to ''
   end
 
+  def destroy
+      @sighting = Sighting.find(params[:id])
+      @sighting.destroy
+      redirect_to '/sightings/new'
+    end
 end
